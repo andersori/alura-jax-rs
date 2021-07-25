@@ -35,7 +35,7 @@ public class CarrinhoTest {
     public void testaQueBuscarUmCarrinhoTrazOCarrinhoEsperado(){
         WebTarget target = client.target(URI.create("http://localhost:8080"));
 
-        Carrinho carrinho = (Carrinho) new XStream().fromXML(target.path("/carrinhos").request().get(String.class));
+        Carrinho carrinho = (Carrinho) new XStream().fromXML(target.path("/carrinhos/1").request().get(String.class));
         Assert.assertEquals(carrinho.getRua(), "Rua Vergueiro 3185, 8 andar");
     }
 }

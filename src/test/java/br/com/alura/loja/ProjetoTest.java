@@ -34,7 +34,7 @@ public class ProjetoTest {
     @Test
     public void testaGetProjeto(){
         WebTarget target = client.target(URI.create("http://localhost:8080"));
-        Projeto projeto = (Projeto) new XStream().fromXML(target.path("/projetos").request().get(String.class));
+        Projeto projeto = (Projeto) new XStream().fromXML(target.path("/projetos/1").request().get(String.class));
         Assert.assertEquals(projeto.getNome(), "Minha loja");
     }
 }
