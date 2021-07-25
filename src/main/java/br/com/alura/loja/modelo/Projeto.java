@@ -1,10 +1,13 @@
 package br.com.alura.loja.modelo;
 
+import com.google.gson.Gson;
 import com.thoughtworks.xstream.XStream;
 
 public class Projeto {
+    @SuppressWarnings("unused")
     private long id;
     private String nome;
+    @SuppressWarnings("unused")
     private int anoDeInicio;
 
     public Projeto(){
@@ -27,5 +30,8 @@ public class Projeto {
 
     public String toXML(){
         return new XStream().toXML(this);
+    }
+    public String toJson(){
+        return new Gson().toJson(this);
     }
 }

@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-
 import com.google.gson.Gson;
 import com.thoughtworks.xstream.XStream;
 
@@ -15,6 +11,7 @@ public class Carrinho {
 
 	private List<Produto> produtos = new ArrayList<Produto>();
 	private String rua;
+	@SuppressWarnings("unused")
 	private String cidade;
 	private long id;
 
@@ -50,8 +47,8 @@ public class Carrinho {
 	}
 	
 	public void remove(long id) {
-		for (Iterator iterator = produtos.iterator(); iterator.hasNext();) {
-			Produto produto = (Produto) iterator.next();
+		for (Iterator<Produto> iterator = produtos.iterator(); iterator.hasNext();) {
+			Produto produto = iterator.next();
 			if(produto.getId() == id) {
 				iterator.remove();
 			}
@@ -64,8 +61,8 @@ public class Carrinho {
 	}
 
 	public void trocaQuantidade(Produto produto) {
-		for (Iterator iterator = produtos.iterator(); iterator.hasNext();) {
-			Produto p = (Produto) iterator.next();
+		for (Iterator<Produto> iterator = produtos.iterator(); iterator.hasNext();) {
+			Produto p = iterator.next();
 			if(p.getId() == produto.getId()) {
 				p.setQuantidade(produto.getQuantidade());
 				return;
@@ -79,6 +76,9 @@ public class Carrinho {
 
 	public String toXML() {
 		return new XStream().toXML(this);
+	}
+	public String toJson(){
+		return new Gson().toJson(this);
 	}
 
 }
