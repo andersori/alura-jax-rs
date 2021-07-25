@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.thoughtworks.xstream.XStream;
 
 public class Projeto {
-    @SuppressWarnings("unused")
     private long id;
     private String nome;
     @SuppressWarnings("unused")
@@ -20,6 +19,10 @@ public class Projeto {
         this.anoDeInicio = anoDeInicio;
     }
 
+    public long getId(){
+        return id;
+    }
+    
     public void setId(long id){
         this.id = id;
     }

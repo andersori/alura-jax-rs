@@ -56,6 +56,7 @@ public class CarrinhoTest {
 
         Response res = target.path("/carrinhos").request().post(entity);
 
-        Assert.assertEquals("<status>Sucesso</status>", res.readEntity(String.class));
+        Assert.assertEquals(201, res.getStatus());
+        Assert.assertTrue(client.target(res.getHeaderString("Location")).request().get(String.class).contains("Tablet"));
     }
 }
