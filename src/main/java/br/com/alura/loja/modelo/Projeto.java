@@ -21,6 +21,10 @@ public class Projeto {
         this.id = id;
     }
 
+    public String getNome(){
+        return nome;
+    }
+
     public String toXML(){
         return new XStream().toXML(this);
     }

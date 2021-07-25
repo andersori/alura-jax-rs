@@ -14,9 +14,9 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.alura.loja.modelo.Projeto;
+import br.com.alura.loja.modelo.Carrinho;
 
-public class ProjetoTest {
+public class CarrinhoTest {
     
     Client client = ClientBuilder.newClient();
     static HttpServer server;
@@ -32,9 +32,10 @@ public class ProjetoTest {
     }
 
     @Test
-    public void testaGetProjeto(){
+    public void testaQueBuscarUmCarrinhoTrazOCarrinhoEsperado(){
         WebTarget target = client.target(URI.create("http://localhost:8080"));
-        Projeto projeto = (Projeto) new XStream().fromXML(target.path("/projetos").request().get(String.class));
-        Assert.assertEquals(projeto.getNome(), "Minha loja");
+
+        Carrinho carrinho = (Carrinho) new XStream().fromXML(target.path("/carrinhos").request().get(String.class));
+        Assert.assertEquals(carrinho.getRua(), "Rua Vergueiro 3185, 8 andar");
     }
 }
